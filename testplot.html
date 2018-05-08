@@ -1,0 +1,15 @@
+<canvas id="canvas" width="600" height="400" style="border:1px solid #000000;">
+</canvas> 
+<script language="javascript" type="text/javascript" src="plotcanvas.js" version="1.7" ></script>
+<script>
+var canvas = document.getElementById("canvas");
+var data = [[0, 0], [1, 1], [2, 4], [3, 9], [4, 16], [5, 25], [6, 36], [7, 49], [8, 64], [9, 81]]
+resizePlot(canvas,data)
+plotData(canvas, data,
+{ curves:[function(x) {return .9*x*x;} ],
+  points:[[4,7]],
+  labels: [ {x: 4, y: 16, text: "hello", align:"left", baseline:"middle", color: [122,33,44] } ],
+  colors: [[0,127,127]],
+  pointColor:"purple",
+ })
+</script>

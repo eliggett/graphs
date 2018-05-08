@@ -1,0 +1,63 @@
+<html>
+<head>
+<script src=network.js ></script>
+<meta charset="UTF-8">
+<style>
+table {border-collapse: collapse;}
+th,td {padding:3pt;}
+</style>
+</head>
+<body>
+
+
+<svg style="display:inline-block" id='draw' width=600 height=400 viewBox="0 0 600 400">
+
+</svg>
+
+<span id=debug></span><br>
+<span id=summary style="display:inline-block" >
+</span>
+
+
+<script language=JavaScript>
+function debug(obj)
+{
+	for (var n in obj)
+	document.getElementById('debug').innerHTML+=n+'='+obj[n]+'<br>';
+}
+g = new Graph;
+a = g.node('<table border=1><tr><th>Apples</th><th>are</th></tr><tr><td >yummy</td><td >and sweet</td></tr></table>');
+b = g.node('Bananas');
+c = g.node('Cherries').setAttribute('fill','red');
+d = g.node('Durian');
+e = g.node('Eggplant');
+f = g.node('Frog')
+a.posY = 0;
+b.posY = 0;
+a.moveY = b.moveY = false;
+g.edge(a,b).directed=true;
+g.edge(a,c).directed=true;
+//g.edge(a,d);
+g.edge(b,d).directed=true;
+g.edge(d,e).directed=true;
+g.edge(c,e).directed=true;
+g.edge(b,f).directed=true;
+g.edge(f,e).directed=true;
+//g.edge(d,b).directed=true;
+
+g.parse('hello->world->foo->bar')
+//g.edge(c,d);
+//g.rankLayout(1);
+g.rank2(0)
+//g.springLayout();
+
+g.render(document.getElementById('draw'),false); //,true
+
+summary = document.getElementById('summary')
+for (var i=0;i<g.nodes.length; i++)
+{
+	var n = g.nodes[i];
+	summary.innerHTML += i+' '+n.x + ' ' + n.y + ' ' + n.width + ' ' + n.height+'<br>';
+}
+</script>
+</html>
